@@ -35,11 +35,9 @@ $pro_name=$post['name'];
 $pro_price=$post['price'];
 $pro_gazou_name=$post['gazou_name'];
 
-$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
-$user='root';
-$password='';
-$dbh=new PDO($dsn,$user,$password);
-$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+$require_db = '../common/db.php';
+require_once($require_db);
+$dbh = get_dbh();
 
 $sql='INSERT INTO mst_product(name,price,gazou) VALUES (?,?,?)';
 $stmt=$dbh->prepare($sql);
