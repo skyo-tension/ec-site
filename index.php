@@ -86,7 +86,7 @@
 
     <ul class="menu">
       <li><a href="/shop/member_login.html">会員ログイン</a></li>
-      <li><a href="/shop/shop_list.php">商品注文</a></li>
+  <li><a href="/shop/index.php?action=list">商品注文</a></li>
     </ul>
 
     <p class="debug">

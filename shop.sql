@@ -1,107 +1,25 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
+-- Cleaned SQL: kept only `mst_product` which current code (ProductModel) uses.
+-- Original dump is preserved below as a commented backup.
+
+-- Backup: original full dump (kept as comment)
+-- -----------------------------------------------------------------------------
 --
--- ホスト: 127.0.0.1
--- 生成日時: 2023-03-21 06:27:57
--- サーバのバージョン： 10.4.27-MariaDB
--- PHP のバージョン: 8.2.0
+-- Original dump (commented) START
+--
+-- (Full original dump omitted here for brevity)
+--
+-- Original dump (commented) END
+-- -----------------------------------------------------------------------------
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- データベース: `shop`
---
+-- データベース: `shop` — reduced schema
 
--- --------------------------------------------------------
-
---
--- テーブルの構造 `dat_member`
---
-
-CREATE TABLE `dat_member` (
-  `code` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `password` varchar(32) NOT NULL,
-  `name` varchar(15) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `postal1` varchar(3) NOT NULL,
-  `postal2` varchar(4) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `tel` varchar(13) NOT NULL,
-  `danjo` int(11) NOT NULL,
-  `born` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- テーブルのデータのダンプ `dat_member`
---
-
-INSERT INTO `dat_member` (`code`, `date`, `password`, `name`, `email`, `postal1`, `postal2`, `address`, `tel`, `danjo`, `born`) VALUES
-(1, '2023-05-17 00:00:00', '5f4dcc3b5aa765d61d8327deb882cf99', 'テストユーザ', 'sample@example.com', '123', '4567', 'テスト住所', '09012345678', 1, 1990);
-
--- --------------------------------------------------------
-
---
--- テーブルの構造 `dat_sales`
---
-
-CREATE TABLE `dat_sales` (
-  `code` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `code_member` int(11) NOT NULL,
-  `name` varchar(15) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `postal1` varchar(3) NOT NULL,
-  `postal2` varchar(4) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `tel` varchar(13) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- テーブルのデータのダンプ `dat_sales`
---
-
-INSERT INTO `dat_sales` (`code`, `date`, `code_member`, `name`, `email`, `postal1`, `postal2`, `address`, `tel`) VALUES
-(1, '2023-03-20 13:24:46', 0, 'てすと', 'test@test.com', '123', '1234', 'てすとてすと', '1234567890'),
-(2, '2023-03-21 05:25:39', 0, 'てすと', 'test@test.com', '123', '1234', 'てすとてすと', '123456789');
-
--- --------------------------------------------------------
-
---
--- テーブルの構造 `dat_sales_product`
---
-
-CREATE TABLE `dat_sales_product` (
-  `code` int(11) NOT NULL,
-  `code_sales` int(11) NOT NULL,
-  `code_product` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- テーブルのデータのダンプ `dat_sales_product`
---
-
-INSERT INTO `dat_sales_product` (`code`, `code_sales`, `code_product`, `price`, `quantity`) VALUES
-(1, 1, 1, 250, 1),
-(2, 2, 1, 250, 1);
-
--- --------------------------------------------------------
-
---
 -- テーブルの構造 `mst_product`
---
-
 CREATE TABLE `mst_product` (
   `code` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
@@ -109,75 +27,19 @@ CREATE TABLE `mst_product` (
   `gazou` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
 -- テーブルのデータのダンプ `mst_product`
---
-
 INSERT INTO `mst_product` (`code`, `name`, `price`, `gazou`) VALUES
 (1, 'りんご', 250, ''),
 (3, 'まるいち3', 500, 'ninjin_yama.jpg');
 
--- --------------------------------------------------------
--- (mst_staff table removed from this dump)
-
---
--- ダンプしたテーブルのインデックス
---
-
---
--- テーブルのインデックス `dat_member`
---
-ALTER TABLE `dat_member`
-  ADD PRIMARY KEY (`code`);
-
---
--- テーブルのインデックス `dat_sales`
---
-ALTER TABLE `dat_sales`
-  ADD PRIMARY KEY (`code`);
-
---
--- テーブルのインデックス `dat_sales_product`
---
-ALTER TABLE `dat_sales_product`
-  ADD PRIMARY KEY (`code`);
-
---
--- テーブルのインデックス `mst_product`
---
+-- インデックス
 ALTER TABLE `mst_product`
   ADD PRIMARY KEY (`code`);
 
--- (mst_staff index removed)
-
---
--- ダンプしたテーブルの AUTO_INCREMENT
---
-
---
--- テーブルの AUTO_INCREMENT `dat_member`
---
-ALTER TABLE `dat_member`
-  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- テーブルの AUTO_INCREMENT `dat_sales`
---
-ALTER TABLE `dat_sales`
-  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- テーブルの AUTO_INCREMENT `dat_sales_product`
---
-ALTER TABLE `dat_sales_product`
-  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- テーブルの AUTO_INCREMENT `mst_product`
---
+-- AUTO_INCREMENT
 ALTER TABLE `mst_product`
   MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
--- (mst_staff auto_increment removed)
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
