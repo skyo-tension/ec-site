@@ -1,20 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>ろくまる農園</title>
+<title>ろくまる農園 - 会員ログイン</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #f0f9f0, #dff5df);
+}
+
+.login-container {
+    width: 400px;
+    margin: 80px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.sub-title {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #444;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #4caf50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    background: #43a047;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.login-btn:hover {
+    background: #2e7d32;
+}
+
+.footer-text {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #777;
+}
+</style>
+
 </head>
 <body>
 
-会員ログイン<br />
-<br />
-<form method="post" action="member_login_check.php">
-登録メールアドレス<br />
-<input type="text" name="email" ><br />
-パスワード<br />
-<input type="password" name="pass"><br />
-<br />
-<input type="submit" value="ログイン">
-</form>
+<div class="login-container">
+
+    <h1>ろくまる農園</h1>
+    <p class="sub-title">会員ログイン</p>
+
+    <form method="post" action="member_login_check.php">
+
+        <label>登録メールアドレス</label>
+        <input type="text" name="email" placeholder="example@example.com">
+
+        <label>パスワード</label>
+        <input type="password" name="pass" placeholder="パスワードを入力">
+
+        <input type="submit" value="ログイン" class="login-btn">
+
+    </form>
+
+    <p class="footer-text">
+        安全にログインしてください
+    </p>
+
+</div>
+
 </body>
 </html>

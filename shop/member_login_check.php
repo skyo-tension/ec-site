@@ -10,11 +10,9 @@ $member_email=$post['email'];
 $member_pass=$post['pass'];
 
 $member_pass=md5($member_pass);
+	require_once('../common/db.php');
+	$dbh = get_dbh();
 
-$dsn='mysql:dbname=shop;host=localhost;charset=utf8';
-$user='root';
-$password='';
-$dbh=new PDO($dsn,$user,$password);
 $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 $sql='SELECT code,name FROM dat_member WHERE email=? AND password=?';
@@ -34,18 +32,18 @@ if($rec==false)
 }
 else
 {
-	session_start();
-	$_SESSION['member_login']=1;
-	$_SESSION['member_code']=$rec['code'];
-	$_SESSION['member_name']=$rec['name'];
-	header('Location:shop_list.php');
-	exit();
+session_start();
+$_SESSION['member_login']=1;
+$_SESSION['member_code']=$rec['code'];
+$_SESSION['member_name']=$rec['name'];
+header('Location:shop_list.php');
+exit();
 }
 
 }
 catch(Exception $e)
 {
-	print 'ただいま障害により大変ご迷惑をお掛けしております。';
+	print $e->getMessage();
 	exit();
 }
 

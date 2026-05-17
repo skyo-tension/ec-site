@@ -41,6 +41,13 @@ CREATE TABLE `dat_member` (
   `born` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- テーブルのデータのダンプ `dat_member`
+--
+
+INSERT INTO `dat_member` (`code`, `date`, `password`, `name`, `email`, `postal1`, `postal2`, `address`, `tel`, `danjo`, `born`) VALUES
+(1, '2023-05-17 00:00:00', '5f4dcc3b5aa765d61d8327deb882cf99', 'テストユーザ', 'sample@example.com', '123', '4567', 'テスト住所', '09012345678', 1, 1990);
+
 -- --------------------------------------------------------
 
 --
@@ -111,26 +118,7 @@ INSERT INTO `mst_product` (`code`, `name`, `price`, `gazou`) VALUES
 (3, 'まるいち3', 500, 'ninjin_yama.jpg');
 
 -- --------------------------------------------------------
-
---
--- テーブルの構造 `mst_staff`
---
-
-CREATE TABLE `mst_staff` (
-  `code` int(11) NOT NULL,
-  `name` varchar(15) NOT NULL,
-  `password` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- テーブルのデータのダンプ `mst_staff`
---
-
-INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
-(2, 'ろくまる1', 'e807f1fcf82d132f9bb018ca6738a19f'),
-(3, 'まるいち2', 'e807f1fcf82d132f9bb018ca6738a19f'),
-(4, 'ろるいち3', 'e807f1fcf82d132f9bb018ca6738a19f'),
-(5, 'test', '5f4dcc3b5aa765d61d8327deb882cf99');
+-- (mst_staff table removed from this dump)
 
 --
 -- ダンプしたテーブルのインデックス
@@ -160,11 +148,7 @@ ALTER TABLE `dat_sales_product`
 ALTER TABLE `mst_product`
   ADD PRIMARY KEY (`code`);
 
---
--- テーブルのインデックス `mst_staff`
---
-ALTER TABLE `mst_staff`
-  ADD PRIMARY KEY (`code`);
+-- (mst_staff index removed)
 
 --
 -- ダンプしたテーブルの AUTO_INCREMENT
@@ -193,12 +177,7 @@ ALTER TABLE `dat_sales_product`
 --
 ALTER TABLE `mst_product`
   MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- テーブルの AUTO_INCREMENT `mst_staff`
---
-ALTER TABLE `mst_staff`
-  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+-- (mst_staff auto_increment removed)
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
